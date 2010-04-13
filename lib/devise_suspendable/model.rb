@@ -28,7 +28,7 @@ module Devise
         return if suspended?
         self.suspended_at = Time.zone.now
         self.suspension_reason = reason
-        self.save(:validate = false)
+        self.save(:validate => false)
       end
 
       def unsuspend!
