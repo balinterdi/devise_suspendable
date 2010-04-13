@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "VERSION",
+     "devise_suspendable.gemspec",
      "lib/devise_suspendable.rb",
      "lib/devise_suspendable/hooks/suspendable.rb",
      "lib/devise_suspendable/model.rb",
