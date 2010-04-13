@@ -35,12 +35,21 @@ module Devise
         return if !suspended?
         self.suspended_at = nil
         self.suspension_reason = nil
-        self.save(:validate = false) if self.changed?
+        self.save(:validate => false) if self.changed?
+      end
+
+      # The message to be shown if the account is suspended.
+      def inactive_message
+        if !suspended?
+          :suspended
+        else
+          super
+        end
       end
 
       # override Activatable
       def active?
-        super && suspended?
+        super && !suspended?
       end
     end
   end
