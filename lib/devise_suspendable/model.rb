@@ -9,7 +9,7 @@ module Devise
     module Suspendable
       def self.included(base)
         base.class_eval do
-          validates_length_of :suspension_reason, :maximum => 250
+          validates_length_of :suspension_reason, :maximum => 250, :allow_blank => true
 
           # basic sanitization
           before_validation do |acc|
@@ -40,7 +40,7 @@ module Devise
 
       # The message to be shown if the account is suspended.
       def inactive_message
-        if !suspended?
+        if suspended?
           :suspended
         else
           super
