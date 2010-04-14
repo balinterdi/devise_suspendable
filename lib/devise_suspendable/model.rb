@@ -21,7 +21,7 @@ module Devise
       end
 
       def suspended?
-        self.suspended_at?
+        !!self.suspended_at?
       end
 
       def suspend!(reason = nil)
