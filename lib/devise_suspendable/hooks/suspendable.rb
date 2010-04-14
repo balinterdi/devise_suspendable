@@ -10,14 +10,12 @@ Warden::Manager.after_set_user do |record, warden, options|
       # TODO: defining inactive_message in the model does not overwrite
       # the one defined in devise/models/activatable.rb
       # maybe it's because this is loaded as a plugin?
-      # warden.winning_strategy.fail!(record.inactive_message)
-      warden.winning_strategy.fail!(:suspended)
+      warden.winning_strategy.fail!(record.inactive_message)
     else
       # TODO: defining inactive_message in the model does not overwrite
       # the one defined in devise/models/activatable.rb
       # maybe it's because this is loaded as a plugin?
-      # throw :warden, :scope => scope, :message => record.inactive_message
-      throw :warden, :scope => scope, :message => :suspended
+      throw :warden, :scope => scope, :message => record.inactive_message
     end
   end
 end
